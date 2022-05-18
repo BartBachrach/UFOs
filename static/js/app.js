@@ -15,11 +15,11 @@ function buildTable(data) {
             cell.text(val);
         });
     });
-}        
+};        
 
 function handleClick() {
     let date = d3.select("#datetime").property("value");
-    let filterData = tableData;
+    let filteredData = tableData;
 
 // example JS if-statement syntax:
 // if ( condition ) { code to execute }
@@ -30,14 +30,14 @@ function handleClick() {
 //};
 
     if (date) {
-        filteredData = filteredData.filter(row => row.datetime === date);
-    }
+            filteredData = filteredData.filter(row => row.datetime === date);
+    };
     
     //Rebuild the table using the filtered data
     // @NOTE: if not date was entered, then filteredData will
     // just be the original table data
     buildTable(filteredData);
-}
+};
 d3.selectAll("#filter-btn").on("click", handleClick);
 
 
