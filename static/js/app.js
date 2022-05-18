@@ -1,7 +1,7 @@
 // import the data from data.js
-const tableData = data;
+var tableData = data;
 // reference the HTML table using D3
-let tbody = d3.select("tbody");
+var tbody = d3.select("tbody");
 
 // will fill the table with DATA ONLY
 function buildTable(data) {
@@ -15,4 +15,30 @@ function buildTable(data) {
             cell.text(val);
         });
     });
-}                  
+}        
+
+function handleClick() {
+    let date = d3.select("#datetime").property("value");
+    let filterData = tableData;
+
+// example JS if-statement syntax:
+// if ( condition ) { code to execute }
+
+// pseudocode practice 
+// if ( a date is entered ) {
+    //Filter the default data to show only the date entered
+//};
+
+    if (date) {
+        filteredData = filteredData.filter(row => row.datetime === date);
+    }
+    
+    //Rebuild the table using the filtered data
+    // @NOTE: if not date was entered, then filteredData will
+    // just be the original table data
+    buildTable(filteredData);
+}
+d3.selectAll("#filter-btn").on("click", handleClick);
+
+
+buildTable(tableData);
